@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Generate inline elements from plain text using begin & offset",
   "license": "MIT",
-  "repository": "importre/inline",
+  "repository": "importre/simple-inline",
   "author": {
     "name": "Jaewe Heo",
     "email": "jaeweheo@gmail.com",
