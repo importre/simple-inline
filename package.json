@@ -30,6 +30,9 @@
   "xo": {
     "esnext": true,
     "space": true
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
   }
 }
 

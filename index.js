@@ -1,5 +1,7 @@
 'use strict';
 
+const escape = require('underscore').escape;
+
 module.exports = (text, styles, options) => {
   options = options || {
     returnType: 'html'
@@ -42,15 +44,19 @@ module.exports = (text, styles, options) => {
     return segments;
   }
 
-  return segments.reverse().reduce((text, segment) => {
-    const types = segment.types.join(' ').trim();
-    const a = text.substring(0, segment.begin);
-    const b = text.substring(segment.begin, segment.end);
-    const c = text.substring(segment.end);
-    if (types === '') {
-      return a + b + c;
-    }
-    return `${a}<span class="${types}">${b}</span>${c}`;
-  }, text);
+  return segments.reverse()
+    .reduce((text, segment) => {
+      const types = segment.types.join(' ').trim();
+      const a = text.substring(0, segment.begin);
+      const b = text.substring(segment.begin, segment.end);
+      const c = text.substring(segment.end);
+      if (types === '') {
+        return text;
+      }
+      return escape(`${a}{{span class=#${types}#}}${b}{{/span}}${c}`);
+    }, text)
+    .replace(/{{span class=#([^#]+)#}}(.+?){{\/span}}/g, (m, g1, g2) => {
+      return `<span class="${g1}">${g2}<\/span>`;
+    });
 };
 

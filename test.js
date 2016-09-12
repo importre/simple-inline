@@ -62,3 +62,15 @@ test('complicated case', t => {
   t.is(result, expected);
 });
 
+test('simple html entity', t => {
+  const text = '<hello & world>';
+  const expected = '&lt;hell<span class="bold">o &amp; w</span>orld&gt;';
+  const styles = [{
+    begin: 5,
+    offset: 5,
+    types: ['bold']
+  }];
+  const result = inline(text, styles);
+  t.is(result, expected);
+});
+
