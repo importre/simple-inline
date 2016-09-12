@@ -34,6 +34,13 @@ const result = inline(text, styles);
 ```
 
 
+## Install
+
+```sh
+$ npm i simple-inline
+```
+
+
 ## API
 
 ### inline(text, styles[, options])
