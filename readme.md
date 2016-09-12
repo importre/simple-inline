@@ -1,6 +1,6 @@
 # inline
 
-> :necktie: Generate inline elements based on begin & offset
+> :necktie: Generate inline elements from plain text using `begin` & `offset`
 
 
 ## Usage

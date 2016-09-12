@@ -1,7 +1,7 @@
 {
   "name": "inline",
   "version": "0.0.0",
-  "description": "Generate inline elements based on begin & offset",
+  "description": "Generate inline elements from plain text using begin & offset",
   "license": "MIT",
   "repository": "importre/inline",
   "author": {
