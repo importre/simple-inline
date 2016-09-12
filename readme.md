@@ -1,4 +1,4 @@
-# inline
+# simple-inline
 
 > :necktie: Generate inline elements from plain text using `begin` & `offset`
 
@@ -6,7 +6,7 @@
 ## Usage
 
 ```javascript
-const inline = require('inline');
+const inline = require('simple-inline');
 
 const text = 'hello world';
 const styles = [{
@@ -25,7 +25,6 @@ const styles = [{
 
 // generate html
 const result = inline(text, styles);
-
 ```
 
 ### Output
@@ -39,6 +38,10 @@ const result = inline(text, styles);
 
 ### inline(text, styles[, options])
 
+```javascript
+const inline = require('simple-inline');
+```
+
 #### text
 
 type: `string`
@@ -47,7 +50,7 @@ type: `string`
 
 type: `object` (array)
 
-An item must have `begin`, `offset` and `types`.  
+An item must have `begin`, `offset` and `types`.
 `types` is string array and will be `<span class="<types>"...`
 
 #### options
