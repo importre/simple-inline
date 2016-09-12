@@ -74,3 +74,19 @@ test('simple html entity', t => {
   t.is(result, expected);
 });
 
+test('unicode', t => {
+  const text = '한글';
+  const expected = '<span class="a">한</span><span class="b">글</span>';
+  const styles = [{
+    begin: 0,
+    offset: 1,
+    types: ['a']
+  }, {
+    begin: 1,
+    offset: 1,
+    types: ['b']
+  }];
+  const result = inline(text, styles);
+  t.is(result, expected);
+});
+
