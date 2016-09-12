@@ -1,25 +1,15 @@
 'use strict';
 
-const escape = require('underscore').escape;
+const us = require('underscore');
 
 const getPoints = styles => {
   return styles
-    .map(s => {
-      return {
-        begin: s.begin,
-        end: s.begin + s.offset,
-        types: s.types
-      };
-    })
-    .reduce((prev, curr) => {
-      if (!prev.includes(curr.begin)) {
-        prev.push(curr.begin);
-      }
-      if (!prev.includes(curr.end)) {
-        prev.push(curr.end);
-      }
-      return prev;
-    }, [])
+    .map(s => ({
+      begin: s.begin,
+      end: s.begin + s.offset,
+      types: s.types
+    }))
+    .reduce((points, s) => us.union(points, [s.begin, s.end]), [])
     .sort((a, b) => a - b);
 };
 
@@ -43,21 +33,21 @@ const genHtml = (segments, text) => {
   return segments.reverse()
     .reduce((text, segment) => {
       const types = segment.types.join(' ').trim();
-      const a = text.substring(0, segment.begin);
-      const b = text.substring(segment.begin, segment.end);
-      const c = text.substring(segment.end);
       if (types === '') {
         return text;
       }
-      return escape(`${a}{{span class=#${types}#}}${b}{{/span}}${c}`);
+      const a = text.substring(0, segment.begin);
+      const b = text.substring(segment.begin, segment.end);
+      const c = text.substring(segment.end);
+      return us.escape(`${a}{{span class=#${types}#}}${b}{{/span}}${c}`);
     }, text)
     .replace(/{{span class=#([^#]+)#}}(.+?){{\/span}}/g, (m, g1, g2) => {
       return `<span class="${g1}">${g2}<\/span>`;
     });
 };
 
-module.exports = (text, styles, opts) => {
-  opts = opts || {
+module.exports = (text, styles, options) => {
+  const opts = options || {
     returnType: 'html'
   };
 
