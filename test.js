@@ -21,7 +21,7 @@ test('simple case1 as object', t => {
     types: ['bold', 'strike']
   }];
   const result = inline(text, styles, {
-    type: 'object'
+    returnType: 'object'
   });
   t.is(typeof result, 'object');
 });

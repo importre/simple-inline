@@ -2,7 +2,7 @@
 
 module.exports = (text, styles, options) => {
   options = options || {
-    type: 'html'
+    returnType: 'html'
   };
 
   const points = styles
@@ -38,7 +38,7 @@ module.exports = (text, styles, options) => {
       };
     });
 
-  if (options.type === 'object') {
+  if (options.returnType === 'object') {
     return segments;
   }
 

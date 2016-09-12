@@ -52,13 +52,13 @@ An item must have `begin`, `offset` and `types`.
 
 #### options
 
-##### type
+##### returnType
 
 specify return type. `html`(default) or `object`.
 
 ```javascript
 const result = inline(text, styles, {
-  type: 'object'
+  returnType: 'object'
 });
 ```
 
