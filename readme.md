@@ -1,5 +1,7 @@
 # simple-inline
 
+[![Build Status](https://travis-ci.org/importre/simple-inline.svg?branch=master)](https://travis-ci.org/importre/simple-inline)
+
 > :necktie: Generate inline elements from plain text using `begin` & `offset`
 
 
