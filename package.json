@@ -31,7 +31,8 @@
     "esnext": true,
     "space": true,
     "rules": {
-      "ava/no-skip-test": 0
+      "ava/no-skip-test": 0,
+      "ava/no-only-test": 0
     }
   },
   "dependencies": {

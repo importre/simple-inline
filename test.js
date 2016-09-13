@@ -31,7 +31,12 @@ test('simple case1 as object', t => {
   const result = inline(text, styles, {
     returnType: 'object'
   });
-  t.is(typeof result, 'object');
+  const expected = [{
+    begin: 0,
+    end: 1,
+    types: ['bold', 'strike']
+  }];
+  t.deepEqual(result, expected);
 });
 
 test('simple case2', t => {
