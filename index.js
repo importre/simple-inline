@@ -31,11 +31,15 @@ const getSegments = (styles, points) => {
 };
 
 const genHtml = (segments, text) => {
+  if (segments.length === 0) {
+    return escape(text);
+  }
+
   return segments.reverse()
     .reduce((text, segment) => {
       const types = segment.types.join(' ').trim();
       if (types === '') {
-        return text;
+        return escape(text);
       }
       const a = text.substring(0, segment.begin);
       const b = text.substring(segment.begin, segment.end);

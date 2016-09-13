@@ -1,6 +1,14 @@
 import test from 'ava';
 import inline from './';
 
+test('plain text', t => {
+  const text = 'hello & world';
+  const expected = 'hello &amp; world';
+  const styles = [];
+  const result = inline(text, styles);
+  t.is(result, expected);
+});
+
 test('simple case1', t => {
   const text = 'hello world';
   const expected = '<span class="bold strike">h</span>ello world';
@@ -69,6 +77,18 @@ test('simple html entity', t => {
     begin: 5,
     offset: 5,
     types: ['bold']
+  }];
+  const result = inline(text, styles);
+  t.is(result, expected);
+});
+
+test('styles.types is empty', t => {
+  const text = '<hello & world>';
+  const expected = '&lt;hello &amp; world&gt;';
+  const styles = [{
+    begin: 5,
+    offset: 5,
+    types: []
   }];
   const result = inline(text, styles);
   t.is(result, expected);
