@@ -29,7 +29,10 @@
   },
   "xo": {
     "esnext": true,
-    "space": true
+    "space": true,
+    "rules": {
+      "ava/no-skip-test": 0
+    }
   },
   "dependencies": {
     "underscore": "^1.8.3"
