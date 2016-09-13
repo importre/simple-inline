@@ -27,7 +27,8 @@ const getSegments = (styles, points) => {
         end,
         types
       };
-    });
+    })
+    .filter(s => s.types.length > 0);
 };
 
 const genHtml = (segments, text) => {
@@ -38,9 +39,6 @@ const genHtml = (segments, text) => {
   return segments.reverse()
     .reduce((text, segment) => {
       const types = segment.types.join(' ').trim();
-      if (types === '') {
-        return escape(text);
-      }
       const a = text.substring(0, segment.begin);
       const b = text.substring(segment.begin, segment.end);
       const c = text.substring(segment.end);
